@@ -1,12 +1,12 @@
 module Cdc
   class Contract
-    def initialize(request, schema)
+    def initialize(request, response)
       @request = request
-      @schema = schema
+      @response = response
     end
 
     def valid?
-      @schema.validate(@request.execute)
+      @response.matches?(@request.execute)
     end
   end
 end

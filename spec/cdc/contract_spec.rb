@@ -1,23 +1,23 @@
 module Cdc
   describe Contract do
     let(:request) { mock('request') }
-    let(:schema) { mock('schema') }
+    let(:expected_response) { mock('expected_response') }
 
-    subject { Contract.new(request, schema) }
+    subject { Contract.new(request, expected_response) }
 
     describe '#valid?' do
-      let(:response) { stub('response') }
+      let(:actual_response) { stub('actual_response') }
 
-      before { request.should_receive(:execute).and_return(response) }
+      before { request.should_receive(:execute).and_return(actual_response) }
 
-      context 'when request response matches schema' do
-        before { schema.should_receive(:validate).with(response).and_return(true) }
+      context 'when the actual response matches the expected response' do
+        before { expected_response.should_receive(:matches?).with(actual_response).and_return(true) }
 
         it { should be_valid }
       end
 
-      context 'when request response does not match schema' do
-        before { schema.should_receive(:validate).with(response).and_return(false) }
+      context 'when the actual response does not match the expected response' do
+        before { expected_response.should_receive(:matches?).with(actual_response).and_return(false) }
 
         it { should_not be_valid }
       end
