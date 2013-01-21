@@ -7,8 +7,8 @@ module Cdc
       @params = params
     end
 
-    def execute(connection)
-      connection.send(@method, @path, @params, @headers)
+    def execute
+      service.send(@method, @path, @params, @headers)
     end
   end
 end
