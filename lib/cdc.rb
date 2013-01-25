@@ -6,6 +6,7 @@ require "cdc/builder"
 require "cdc/contract"
 require "cdc/request"
 require "cdc/response"
+require "cdc/schema"
 
 Dependo::Registry[:service] = Class.new
-Dependo::Registry[:schema_class] = Class
+Dependo::Registry[:validator] = Class.new

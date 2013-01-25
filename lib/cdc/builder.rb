@@ -1,7 +1,5 @@
 module Cdc
   class Builder
-    extend Dependo::Mixin
-
     def self.from_file(path)
       contract = JSON.parse(File.read(path))
       request = parse_request(contract['request'])
@@ -18,7 +16,7 @@ module Cdc
     end
 
     def self.parse_response(response)
-      Response.new(response['status'], response['headers'], schema_class.new(response['body']))
+      Response.new(response['status'], response['headers'], Schema.new(response['body']))
     end
   end
 end
