@@ -7,7 +7,10 @@ module CDC
     end
 
     def matches?(response)
-      @status == response.status && @headers == response.headers && @schema.validate(response.body)
+      valid_status = @status == response.status
+      valid_headers = @headers == response.headers.select { |key,_| @headers.include?(key) }
+      valid_body = @schema.validate(response.body)
+      valid_status && valid_headers && valid_body
     end
   end
 end

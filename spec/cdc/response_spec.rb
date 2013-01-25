@@ -6,7 +6,7 @@ module CDC
       let(:schema) { mock('schema') }
       let(:response) { described_class.new(status, headers, schema) }
 
-      context 'when status and headers are the same and body matches expected schema' do
+      context 'when status, headers and body meet contract expectations' do
         let(:good_response) do
           stub({
             :status => status,
@@ -29,11 +29,26 @@ module CDC
         end
 
         it 'should not match' do
+          schema.stub!(:validate)
           response.matches?(different_status_response).should be_false
         end
       end
 
-      context 'when headers are different' do
+      context 'when actual headers include expected headers' do
+        let(:inclusive_headers_response) do
+          stub(:status => status,
+               :headers => {'Content-type' => 'application/json',
+                            'Age' => 60},
+               :body => 'foo')
+        end
+
+        it 'should match' do
+          schema.stub!(:validate => true)
+          response.matches?(inclusive_headers_response).should be_true
+        end
+      end
+
+      context 'when actual headers do not include expected headers' do
         let(:different_headers_response) do
           stub(:status => status,
                :headers => {'Content-type' => 'text/html'},
@@ -41,6 +56,7 @@ module CDC
         end
 
         it 'should not match' do
+          schema.stub!(:validate)
           response.matches?(different_headers_response).should be_false
         end
       end
