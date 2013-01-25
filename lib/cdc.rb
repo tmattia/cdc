@@ -1,6 +1,7 @@
 require "cdc/version"
 
 require 'dependo'
+require 'faraday'
 require 'json'
 require 'json-schema'
 
@@ -10,5 +11,5 @@ require "cdc/request"
 require "cdc/response"
 require "cdc/schema"
 
-Dependo::Registry[:service] = Class.new
+Dependo::Registry[:service] = Faraday.new(:url => ENV['CDC_URL'] || 'http://localhost')
 Dependo::Registry[:schema_validator] = JSON::Validator
