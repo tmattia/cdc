@@ -2,7 +2,7 @@ module CDC
   describe Response do
     describe '#matches?' do
       let(:status) { 200 }
-      let(:headers) { {'Content-type' => 'application/json'} }
+      let(:headers) { {'Content-Type' => 'application/json'} }
       let(:schema) { mock('schema') }
       let(:response) { described_class.new(status, headers, schema) }
 
@@ -37,7 +37,7 @@ module CDC
       context 'when actual headers include expected headers' do
         let(:inclusive_headers_response) do
           stub(:status => status,
-               :headers => {'Content-type' => 'application/json',
+               :headers => {'Content-Type' => 'application/json',
                             'Age' => 60},
                :body => 'foo')
         end
@@ -51,7 +51,7 @@ module CDC
       context 'when actual headers do not include expected headers' do
         let(:different_headers_response) do
           stub(:status => status,
-               :headers => {'Content-type' => 'text/html'},
+               :headers => {'Content-Type' => 'text/html'},
                :body => 'foo')
         end
 
