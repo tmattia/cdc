@@ -7,7 +7,7 @@ module Cdc
     end
 
     def validate(data)
-      validator.validate(@expectation, data)
+      schema_validator.validate(@expectation, data)
     end
   end
 end

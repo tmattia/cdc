@@ -9,4 +9,4 @@ require "cdc/response"
 require "cdc/schema"
 
 Dependo::Registry[:service] = Class.new
-Dependo::Registry[:validator] = Class.new
+Dependo::Registry[:schema_validator] = Class.new
