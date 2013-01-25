@@ -8,3 +8,4 @@ require "cdc/request"
 require "cdc/response"
 
 Dependo::Registry[:service] = Class.new
+Dependo::Registry[:schema_class] = Class

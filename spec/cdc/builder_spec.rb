@@ -2,11 +2,26 @@ module Cdc
   describe Builder do
     describe '.from_file' do
       let(:file_path) { File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'contract.json')) }
+      let(:request) { stub('request') }
+      let(:response) { stub('response') }
+      let(:schema_class) { stub('schema class') }
+      let(:schema) { stub('schema') }
+      let(:contract) { stub('contract') }
 
-      it 'should create a new Contract from a contract file' do
-        pending('waiting for default service implementation')
-        contract = described_class.from_file(file_path)
-        contract.should be_valid
+      before { described_class.stub(:schema_class => schema_class) }
+
+      it 'should build a new contract from a contract file' do
+        schema_class.should_receive(:new).with(a_kind_of(Hash)).and_return(schema)
+        Request.should_receive(:new).with(:get, '/hello_world', {'Accept' => 'application/json'}, nil).and_return(request)
+        Response.should_receive(:new).with('200', {'Content-type' => 'application/json'}, schema).and_return(response)
+        Contract.should_receive(:new).with(request, response).and_return(contract)
+        described_class.from_file(file_path).should == contract
+      end
+    end
+
+    describe '.schema_class' do
+      it 'should be injected' do
+        described_class.should respond_to(:schema_class)
       end
     end
   end
