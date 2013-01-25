@@ -7,7 +7,7 @@ require 'cdc/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "cdc"
-  gem.version       = Cdc::VERSION
+  gem.version       = CDC::VERSION
   gem.authors       = ["Tomas Mattia"]
   gem.email         = ["tmattia@thoughtworks.com"]
   gem.description   = %q{Consumer-Driven Contracts in Ruby}

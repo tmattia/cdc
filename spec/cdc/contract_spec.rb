@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   describe Contract do
 
     describe '#valid?' do

@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   describe Builder do
     describe '.from_file' do
       let(:file_path) { File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'contract.json')) }

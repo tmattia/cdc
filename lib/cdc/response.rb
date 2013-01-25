@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   class Response
     def initialize(status, headers, schema)
       @status = status

@@ -1,4 +1,4 @@
-# Cdc
+# CDC
 
 TODO: Write a gem description
 

@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   describe Response do
     describe '#matches?' do
       let(:status) { 200 }

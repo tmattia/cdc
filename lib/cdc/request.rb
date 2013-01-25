@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   class Request
     include Dependo::Mixin
 

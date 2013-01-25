@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   describe Request do
     describe '#execute' do
       let(:path) { '/foo' }

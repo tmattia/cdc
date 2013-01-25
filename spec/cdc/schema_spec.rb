@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   describe Schema do
     describe '#validate' do
       let(:schema_validator) { stub('schema_validator') }

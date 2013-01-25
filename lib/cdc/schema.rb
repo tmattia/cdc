@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   class Schema
     include Dependo::Mixin
 

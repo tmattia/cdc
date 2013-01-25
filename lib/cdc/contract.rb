@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   class Contract
     def initialize(request, response)
       @request = request

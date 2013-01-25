@@ -1,4 +1,4 @@
-module Cdc
+module CDC
   class Builder
     def self.from_file(path)
       contract = JSON.parse(File.read(path))
