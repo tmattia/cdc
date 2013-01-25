@@ -14,5 +14,12 @@ module Cdc
         end
       end
     end
+
+    describe '#service' do
+      it 'should be injected' do
+        request = described_class.new(nil, nil, nil, nil)
+        request.should respond_to(:service)
+      end
+    end
   end
 end

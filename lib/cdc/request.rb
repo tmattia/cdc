@@ -1,5 +1,7 @@
 module Cdc
   class Request
+    include Dependo::Mixin
+
     def initialize(method, path, headers, params)
       @method = method
       @path = path
