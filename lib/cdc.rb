@@ -5,6 +5,7 @@ require 'faraday'
 require 'json'
 require 'json-schema'
 
+require "cdc/extensions"
 require "cdc/builder"
 require "cdc/contract"
 require "cdc/request"
