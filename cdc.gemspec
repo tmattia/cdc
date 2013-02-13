@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  #gem.add_dependency 'dependo'
+  gem.add_dependency 'dependo'
   gem.add_dependency 'json-schema'
   gem.add_dependency 'faraday'
 
